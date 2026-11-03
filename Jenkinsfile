@@ -1,20 +1,20 @@
-pipeline{
-	agent any 
-	stages{
-		stage('pull'){
-			steps{
-				sh 'git clone https://github.com/Harsh1924769/Java-Program.git '
-			}
-		}
-		stage('compile'){
-			steps{
-				sh 'javac hello.java'
-			}
-		}
-		stage('Execute'){
-			steps{
-				sh 'java hello.java'
-			}
-		}
-	}
+pipeline {
+    agent any
+
+    stages {
+        stage('Compile') {
+            steps {
+                // Compiles the Java source file into bytecode (hello.class)
+                sh 'javac hello.java'
+            }
+        }
+        
+        stage('Execute & Verify') {
+            steps {
+                // Runs the compiled Java class file and prints to the console
+                sh 'java hello'
+            }
+        }
+    }
 }
+
